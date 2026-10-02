@@ -1,46 +1,56 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express from 'express';
+import type { Request, Response, NextFunction } from 'express';
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
-import { db } from './db';
-import { User, Role } from './types';
+import { db } from './db.ts';
+import type { User, Role } from './types.ts';
 
-// In-memory session store mapped by token
-interface Session {
-  userId: string; // db id
-  createdAt: number;
-}
+const SESSION_SECRET = process.env.SESSION_SECRET || 'college-assignment-tracker-secret-key-2026';
 
-const sessions = new Map<string, Session>();
-
-// Session helpers
+// Stateless HMAC-signed session helpers (survives container restarts & scaling)
 export function createSession(userId: string): string {
-  const token = crypto.randomBytes(32).toString('hex');
-  sessions.set(token, {
-    userId,
-    createdAt: Date.now(),
-  });
-  return token;
+  const payload = Buffer.from(
+    JSON.stringify({
+      userId,
+      exp: Date.now() + 7 * 24 * 60 * 60 * 1000, // 7 days
+    })
+  ).toString('base64url');
+
+  const signature = crypto
+    .createHmac('sha256', SESSION_SECRET)
+    .update(payload)
+    .digest('base64url');
+
+  return `${payload}.${signature}`;
 }
 
 export function getSessionUser(token: string | undefined): User | null {
-  if (!token) return null;
-  const session = sessions.get(token);
-  if (!session) return null;
+  if (!token || typeof token !== 'string') return null;
+  const parts = token.split('.');
+  if (parts.length !== 2) return null;
 
-  // Session expiry 7 days
-  if (Date.now() - session.createdAt > 7 * 24 * 60 * 60 * 1000) {
-    sessions.delete(token);
+  const [payloadStr, signature] = parts;
+  const expectedSig = crypto
+    .createHmac('sha256', SESSION_SECRET)
+    .update(payloadStr)
+    .digest('base64url');
+
+  if (signature !== expectedSig) return null;
+
+  try {
+    const data = JSON.parse(Buffer.from(payloadStr, 'base64url').toString('utf-8'));
+    if (!data.userId || !data.exp || data.exp < Date.now()) {
+      return null;
+    }
+    const user = db.findUserById(data.userId);
+    return user || null;
+  } catch {
     return null;
   }
-
-  const user = db.findUserById(session.userId);
-  return user || null;
 }
 
-export function destroySession(token: string | undefined) {
-  if (token) {
-    sessions.delete(token);
-  }
+export function destroySession(_token: string | undefined) {
+  // Stateless token invalidated on client-side and cookie clear
 }
 
 // Request extension
@@ -124,8 +134,8 @@ apiRouter.post('/auth/login', (req: Request, res: Response) => {
   // Set HTTP-only cookie
   res.cookie('cat_token', token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
+    secure: true,
+    sameSite: 'none',
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 

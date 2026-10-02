@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import bcrypt from 'bcryptjs';
-import {
+import type {
   User,
   Subject,
   Assignment,
@@ -10,7 +10,7 @@ import {
   SubmissionStatus,
   AssignmentWithStatus,
   SubmissionOverviewItem,
-} from './types';
+} from './types.ts';
 
 interface DatabaseSchema {
   users: User[];
