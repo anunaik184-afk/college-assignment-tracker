@@ -1,0 +1,241 @@
+{
+  "users": [
+    {
+      "id": "usr_lec_001",
+      "user_id": "LEC001",
+      "name": "Dr. Priya Sharma",
+      "password_hash": "$2b$10$3Jpp0xpbmLwhoHhN953azuqFkTr7jYAMaIuvpYQnrgPHidHSWIXHy",
+      "role": "LECTURER",
+      "class": "Faculty of Computer Science",
+      "section": "Department Head",
+      "email": "dr.priya@college.edu",
+      "created_at": "2026-09-02T08:05:56.137Z"
+    },
+    {
+      "id": "usr_lec_002",
+      "user_id": "LEC002",
+      "name": "Prof. Rajesh Verma",
+      "password_hash": "$2b$10$3Jpp0xpbmLwhoHhN953azuqFkTr7jYAMaIuvpYQnrgPHidHSWIXHy",
+      "role": "LECTURER",
+      "class": "Faculty of Computer Science",
+      "section": "Assistant Professor",
+      "email": "prof.rajesh@college.edu",
+      "created_at": "2026-09-07T08:05:56.137Z"
+    },
+    {
+      "id": "usr_stu_001",
+      "user_id": "STU001",
+      "name": "Anu Naik",
+      "password_hash": "$2b$10$NT5uQBJfxPL5gM6N9npD8.03k/gudLG8eecWrTyX1J3Ci44ouEQqS",
+      "role": "STUDENT",
+      "class": "B.Tech CS 3rd Year",
+      "section": "Section A",
+      "email": "anu.naik@college.edu",
+      "created_at": "2026-09-12T08:05:56.137Z"
+    },
+    {
+      "id": "usr_stu_002",
+      "user_id": "STU002",
+      "name": "Rahul Verma",
+      "password_hash": "$2b$10$NT5uQBJfxPL5gM6N9npD8.03k/gudLG8eecWrTyX1J3Ci44ouEQqS",
+      "role": "STUDENT",
+      "class": "B.Tech CS 3rd Year",
+      "section": "Section A",
+      "email": "rahul.verma@college.edu",
+      "created_at": "2026-09-12T08:05:56.137Z"
+    },
+    {
+      "id": "usr_stu_003",
+      "user_id": "STU003",
+      "name": "Sneha Patel",
+      "password_hash": "$2b$10$NT5uQBJfxPL5gM6N9npD8.03k/gudLG8eecWrTyX1J3Ci44ouEQqS",
+      "role": "STUDENT",
+      "class": "B.Tech CS 3rd Year",
+      "section": "Section B",
+      "email": "sneha.patel@college.edu",
+      "created_at": "2026-09-12T08:05:56.137Z"
+    }
+  ],
+  "subjects": [
+    {
+      "id": "sub_001",
+      "subject_code": "CS501",
+      "subject_name": "Data Structures & Algorithms"
+    },
+    {
+      "id": "sub_002",
+      "subject_code": "CS502",
+      "subject_name": "Database Management Systems"
+    },
+    {
+      "id": "sub_003",
+      "subject_code": "CS503",
+      "subject_name": "Computer Networks"
+    },
+    {
+      "id": "sub_004",
+      "subject_code": "CS504",
+      "subject_name": "Software Engineering & Design"
+    }
+  ],
+  "assignments": [
+    {
+      "id": "asg_001",
+      "title": "Implement Stack using Python & Linked Lists",
+      "description": "Implement a Stack data structure using singly linked lists in Python. Include push, pop, peek, isEmpty, and display methods with time complexity analysis in comments.",
+      "subject": "CS501",
+      "priority": "HIGH",
+      "created_by": "usr_lec_001",
+      "assigned_class": "B.Tech CS 3rd Year",
+      "assigned_section": "All",
+      "deadline": "2026-09-29T08:05:56.137Z",
+      "created_at": "2026-09-22T08:05:56.137Z"
+    },
+    {
+      "id": "asg_002",
+      "title": "Design ER Diagram for University Management System",
+      "description": "Construct a detailed Entity-Relationship Diagram representing college departments, courses, faculty, students, grades, and library borrowings. Identify all primary and foreign keys.",
+      "subject": "CS502",
+      "priority": "MEDIUM",
+      "created_by": "usr_lec_001",
+      "assigned_class": "B.Tech CS 3rd Year",
+      "assigned_section": "Section A",
+      "deadline": "2026-10-01T08:05:56.137Z",
+      "created_at": "2026-09-24T08:05:56.137Z"
+    },
+    {
+      "id": "asg_003",
+      "title": "SQL Queries Assignment (Complex Joins & Aggregations)",
+      "description": "Write 12 SQL queries covering multi-table INNER and OUTER joins, GROUP BY with HAVING clauses, and correlated subqueries on the provided sample e-commerce schema.",
+      "subject": "CS502",
+      "priority": "HIGH",
+      "created_by": "usr_lec_001",
+      "assigned_class": "B.Tech CS 3rd Year",
+      "assigned_section": "All",
+      "deadline": "2026-10-05T23:59:00.000Z",
+      "created_at": "2026-09-28T08:05:56.137Z"
+    },
+    {
+      "id": "asg_004",
+      "title": "Computer Networks Lab Record - Socket Programming",
+      "description": "Complete the lab record documentation for Experiment 4: Client-Server TCP socket communication and packet capture inspection using Wireshark.",
+      "subject": "CS503",
+      "priority": "MEDIUM",
+      "created_by": "usr_lec_002",
+      "assigned_class": "B.Tech CS 3rd Year",
+      "assigned_section": "All",
+      "deadline": "2026-10-04T17:00:00.000Z",
+      "created_at": "2026-09-29T08:05:56.137Z"
+    },
+    {
+      "id": "asg_005",
+      "title": "Data Structures Mini Project - Trie Implementation",
+      "description": "Build an autocomplete search engine using the Trie data structure. Provide a clean CLI interface, test suite with 10,000 words, and benchmark memory footprint.",
+      "subject": "CS501",
+      "priority": "HIGH",
+      "created_by": "usr_lec_001",
+      "assigned_class": "B.Tech CS 3rd Year",
+      "assigned_section": "All",
+      "deadline": "2026-10-10T18:00:00.000Z",
+      "created_at": "2026-09-30T08:05:56.137Z"
+    }
+  ],
+  "assignment_assignees": [
+    {
+      "id": "asgn_01",
+      "assignment_id": "asg_001",
+      "student_id": "usr_stu_001"
+    },
+    {
+      "id": "asgn_02",
+      "assignment_id": "asg_001",
+      "student_id": "usr_stu_002"
+    },
+    {
+      "id": "asgn_03",
+      "assignment_id": "asg_001",
+      "student_id": "usr_stu_003"
+    },
+    {
+      "id": "asgn_04",
+      "assignment_id": "asg_002",
+      "student_id": "usr_stu_001"
+    },
+    {
+      "id": "asgn_05",
+      "assignment_id": "asg_002",
+      "student_id": "usr_stu_002"
+    },
+    {
+      "id": "asgn_06",
+      "assignment_id": "asg_003",
+      "student_id": "usr_stu_001"
+    },
+    {
+      "id": "asgn_07",
+      "assignment_id": "asg_003",
+      "student_id": "usr_stu_002"
+    },
+    {
+      "id": "asgn_08",
+      "assignment_id": "asg_003",
+      "student_id": "usr_stu_003"
+    },
+    {
+      "id": "asgn_09",
+      "assignment_id": "asg_004",
+      "student_id": "usr_stu_001"
+    },
+    {
+      "id": "asgn_10",
+      "assignment_id": "asg_004",
+      "student_id": "usr_stu_002"
+    },
+    {
+      "id": "asgn_11",
+      "assignment_id": "asg_004",
+      "student_id": "usr_stu_003"
+    },
+    {
+      "id": "asgn_12",
+      "assignment_id": "asg_005",
+      "student_id": "usr_stu_001"
+    },
+    {
+      "id": "asgn_13",
+      "assignment_id": "asg_005",
+      "student_id": "usr_stu_002"
+    },
+    {
+      "id": "asgn_14",
+      "assignment_id": "asg_005",
+      "student_id": "usr_stu_003"
+    }
+  ],
+  "submissions": [
+    {
+      "id": "subm_001",
+      "assignment_id": "asg_001",
+      "student_id": "usr_stu_001",
+      "status": "LATE",
+      "submission_note": "Submitted Python code with unittest cases. Apologies for the 2 days delay due to illness.",
+      "submitted_at": "2026-10-01T08:05:56.137Z"
+    },
+    {
+      "id": "subm_002",
+      "assignment_id": "asg_001",
+      "student_id": "usr_stu_002",
+      "status": "COMPLETED",
+      "submission_note": "Implemented stack with linked list, included memory analysis plot.",
+      "submitted_at": "2026-09-28T08:05:56.137Z"
+    },
+    {
+      "id": "subm_003",
+      "assignment_id": "asg_003",
+      "student_id": "usr_stu_001",
+      "status": "COMPLETED",
+      "submission_note": "All 12 SQL queries executed on PostgreSQL with explain plan screenshots attached.",
+      "submitted_at": "2026-10-01T20:05:56.137Z"
+    }
+  ]
+}
